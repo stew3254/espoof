@@ -18,7 +18,7 @@ class HelpFormatter(argparse.RawTextHelpFormatter):
     #Formats the text in help
     def _format_action(self, action):
         width = 24
-        return f"    {self._format_action_invocation(action):{width}} {action.help}\n"
+        return f"  {self._format_action_invocation(action):{width}} {action.help}\n"
 
     #Reset usage name and strip extra newline character
     def _format_usage(self, usage, actions, groups, prefix):
@@ -28,11 +28,11 @@ def parse():
     #Help the program displays
     program = sys.argv[0]
     description = "{} - the email spoofing tool".format(program.split("/")[-1])
-    usage = "{} [OPTIONS]".format(program)
+    usage = "{} [OPTIONS] <domain>".format(program)
     epilog = """Examples:
-    {} mail.server.com
-    {} -u user@domain.com -t p smpt.server.com:587
-    {} -U account.txt -f my.pdf -t html -e email.txt 127.0.0.1:1337""".format(program, program, program)
+  {} mail.server.com
+  {} -u user@domain.com -t p smpt.server.com:587
+  {} -U account.txt -f my.pdf -t html -e email.txt 127.0.0.1:1337""".format(program, program, program)
 
     #Create the parser
     parser = argparse.ArgumentParser(add_help=False, description=description, usage=usage, prog=program,
